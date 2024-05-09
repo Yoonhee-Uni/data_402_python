@@ -137,3 +137,96 @@ my_set.update([2, 3, 4]) # {1, 2, 3, 4}
 # discard an element
 my_set.discard(4)  # {1, 3, 5, 6}
 ```
+
+## Control Flow
+### 1. Conditional Logic
+
+We can employ `if`...`elif`...`else` statements to specify a block of code to execute depending on whether an expression evaluates or coerces to `True`.
+```commandline
+paula_chocolate = 4
+luke_chocolate = 6
+
+if paula_chocolate > luke_chocolate:
+    print('Paula has more chocolate')
+elif paula_chocolate < luke_chocolate:
+    print('Luke has more chocolate')
+else:
+    print('Both got same amount')
+
+print('play again?')
+
+# Luke has more chocolate
+# play again?
+```
+
+## Loop
+A Python for loop is utilized to iterate through any `iterable` object, such as a `list`, `string`, or `tuple`.
+```commandline
+
+fishes = [
+    {'name': 'Dory', 'feed': False},
+    {'name': 'Nemo', 'feed': True},
+    {'name': 'Gill', 'feed': True},
+    {'name': 'Bloat', 'feed': False},
+    {'name': 'Peach', 'feed': True},
+    {'name': 'Bubbles', 'feed': True},
+    {'name': 'deb', 'feed': False}
+    ]
+
+for blub in fishes:
+    if blub['feed']:
+        food(blub)
+print('all hungry blub fed!')
+
+```
+
+Iterating over a dictionary allows us to access its keys. We can utilize the built-in methods of dictionaries to modify this behavior.
+```commandline
+ fish = { 'name': 'Dory',
+              'feed': False,
+              'Colour':'Blue',
+              'age': 2
+            }
+ 
+ for key, value in fish.items():
+    print(f'key:{key}, value: {value}')
+    
+# 'key: name, value: Dory'
+# 'key: feed, value: False'
+# 'key: colour, value: Blue'
+# 'key: age, value: 2' 
+```
+
+## Functions
+Python can be used in different ways. Functional programming is one style where we focus on making small, testable functions. We define functions like this:
+```commandline
+def hello_new_bee(name):
+    return 'Welcome to Data Enginnering ' + name
+```
+1. `def`: This keyword is used to define a function.
+2. `hello_new_bee`: This is the name of the function.
+3. `(name):` This is the parameter the function expects to receive when it's called. It represents the name of the person being welcomed.
+4. `return`: This keyword is used to specify the value that the function should output.
+5. `Welcome to Data Engineering `: This is a string literal that forms the beginning of the greeting message.
+6. `+`: This is the concatenation operator, used to join strings together.
+7. `name`: This is the parameter received by the function, representing the name of the person being welcomed. It's concatenated with the greeting message.
+
+### Positional Arguments vs Keyword Arguments
+
+When we create functions, we can set up placeholders called parameters. These placeholders are like empty slots where we'll put values when we use the function. The names we give to these placeholders don't really affect how the function works, but it's a good idea to use names that describe what they're for. When we call the function, the order in which we provide values decides which placeholder gets which value. These placeholders are called positional arguments because their position matters. Every positional argument needs to have a value when we call the function, or else the function won't work correctly.
+
+```commandline
+def minus(a,b,c):
+    return a-b-c
+
+total = minus(100-9-8)  # returns 83
+```
+
+We can make functions more flexible by giving them optional arguments. With keyword arguments, we don't have to worry about the order in which we provide them; instead, we assign them to specific names. If we don't provide a value for an optional argument, the function will use a default value that we set. Using keyword arguments can sometimes make the code easier to read and understand compared to just listing all the arguments.
+```
+def product_name(name = "pen pineapple apple pen"):
+    return 'We have good product called: ' + name
+
+product_name('run out of ink pen') # 'We have good product called: run out of ink pen '
+product_name() # 'We have good product called: pen pineapple apple pen '
+```
