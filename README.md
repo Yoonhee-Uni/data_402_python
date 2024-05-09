@@ -102,7 +102,7 @@ teacher = {
     'interests': ['coffee','docker','lamsip']
 }
 
-teacher['age'] # 30
+teacher['age'] # 25
 
 teacher['interests'] = ['coffee','docker','lamsip']
 ```
