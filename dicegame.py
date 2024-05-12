@@ -119,7 +119,7 @@ def dice_game():
     time.sleep(3)
     print(
         "If your initial belief in 'if there is a will, there is a way' remains unchanged, you will be able to accomplish anything.")
-    time.sleep(3)
+    time.sleep(4)
     print("Run towards the exit without looking back.")
     time.sleep(2)
     print("Exit game")

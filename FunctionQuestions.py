@@ -9,10 +9,10 @@ def int_func(integer):
     for num in range(1,integer+1):
         if integer % num == 0:
             result.append(num)
-    print(result)
+
     return result
 
-int_func(24)
+print(int_func(24))
 
 print("\nQ1b\n")
 # Q1b: Write a function which takes in two integers as arguments and returns true if one of the numbers
@@ -22,7 +22,10 @@ print("\nQ1b\n")
 # A1b:
 def func_integers(int1, int2):
     for num in int1:
-        print (num % int2 == 0)
+        if num % int2 != 0 :
+            print(False)
+    print(True)
+
 
 func_integers(int_func(12),2)
 # -------------------------------------------------------------------------------------- #
@@ -37,7 +40,7 @@ def find_my_func(string):
     alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", " "]
     return alphabet.index(string.lower())
 
-print(find_my_func("a"))
+print(find_my_func("c"))
 
 
 
@@ -57,7 +60,7 @@ def find_id():
 
     return result
 
-# print(find_id())
+print(find_id())
 
 
 print("\nQ2c\n")
@@ -74,11 +77,10 @@ def password_machine():
       add += int(num)
   answer = int(result) - add
 
-  print(answer)
   return answer
 
 
-# password_machine()
+print(password_machine())
 # -------------------------------------------------------------------------------------- #
 
 print("\nQ3a\n")
