@@ -17,3 +17,6 @@ def test_read2():
     assert actual == expected
 
 
+#when the file doesn't exist.
+#test dict return.
+#test 'w' - new file.
