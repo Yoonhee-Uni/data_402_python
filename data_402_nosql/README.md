@@ -98,3 +98,130 @@ Examples: PostGIS (extension for PostgreSQL), MongoDB with GeoJSON, Neo4j with s
 Description: Combine the ACID guarantees of traditional SQL databases with the scalability of NoSQL databases.
 Examples: Google Spanner, CockroachDB, VoltDB
 Each type of NoSQL database is optimised for specific types of workloads and data models, providing flexibility and performance benefits for various applications. Selecting the appropriate NoSQL database depends on the specific requirements of the application, including data structure, query complexity, scalability needs, and consistency requirements.
+
+
+# MongoDB
+
+#### What is MongoDB?
+No SQL database. Application. 
+MongoDB is a document-oriented NoSQL database used for high volume data storage.
+MongoDB stores data in flexible, JSON-like documents, meaning fields can vary from document to document and data structure can be changed over time
+Each database contains collections which in turn contains documents. Each document can be different with a varying number of fields. The size and content of each document can be different from each other.
+
+#### What are collections in Mongo? 
+MongoDB stores documents in collections. Collections are analogous to tables in relational databases.
+
+1. You can create a collection using the `createCollection()` database method.
+```
+db.createCollection("posts")
+```
+2. You can also create a collection during the insert process.
+```commandline
+We are here assuming object is a valid JavaScript object containing post data:
+
+db.posts.insertOne(object)
+db.collection.createIndex(keys, options, commitQuorum)
+```
+
+
+
+
+#### What are Documents?
+MongoDB stores data records as BSON documents. BSON is a binary representation of JSON documents, though it contains more data types than JSON. For the BSON spec, see bsonspec.org. See also BSON Types.
+![img_9.png](img_9.png)
+
+##### Definition of Documents:
+`JSON Format`: MongoDB documents are stored in a JSON-like format, specifically BSON (Binary JSON). JSON is a text-based format that is easy for humans to read and write and easy for machines to parse and generate.
+
+`BSON Format`: While JSON is used for interaction, MongoDB actually stores data in BSON, a binary representation of JSON. BSON supports more data types and is more efficient in terms of storage and speed.
+
+##### Structure of Documents
+MongoDB documents consist of the following:
+
+`Key-Value Pairs`: Documents are composed of multiple key-value pairs. Each key is a string, and each value can be of various types such as strings, numbers, arrays, or even other documents.
+
+`Flexible Schema`: MongoDB is schemaless, meaning documents in a collection do not need to have the same set of fields or structure. This provides high flexibility in data modeling.
+
+
+#### MongoDB Architecture, how does it work? 
+
+**1. Documents:**
+The fundamental unit of data in MongoDB, stored in BSON (Binary JSON) format.
+Each document contains key-value pairs and can have a flexible schema.
+
+**2. Collections:**
+Groups of documents, analogous to tables in relational databases.
+Collections do not enforce a schema, allowing for flexible document structures.
+
+**3. Databases:**
+Logical containers for collections.
+A single MongoDB server can host multiple databases.
+
+#### What are replica sets?
+##### Replica Sets: 
+A replica set in MongoDB is a group of mongod processes that maintain the same data set. Replica sets provide redundancy and high availability.
+
+`Primary Node`: Accepts write operations.
+
+`Secondary Nodes`: Replicate the primary’s data set and can serve read operations (depending on read preference settings).
+
+`Arbiter`: A node that participates in elections for primary but does not hold data, used to break ties in elections.
+
+##### What is sharding?
+Sharding is the process of distributing data across multiple servers.
+
+**Sharded Cluster Components**
+
+`Shard`: Each shard contains a subset of the sharded data. Shards can be replica sets to provide redundancy and high availability.
+
+`Mongos`: A routing service for MongoDB sharded clusters. It directs queries from applications to the appropriate shard(s).
+
+`Config Servers`: Store metadata and configuration settings for the cluster. These servers manage the cluster’s metadata.
+
+#### Advantages of MongoDB?
+
+MongoDB offers several advantages that make it a popular choice for many developers and organizations. Here are some key benefits:
+
+`1. Flexible Schema Design`
+
+**Schema-less Structure:** MongoDB's document-oriented storage allows for a flexible schema design. This means you can store documents with varying structures in the same collection, making it easy to adapt to changing data requirements without costly migrations.
+**Dynamic Schema:** You can add, delete, or update fields within documents without affecting other documents in the collection.
+
+`2. Scalability`
+
+**Horizontal Scalability:** MongoDB supports sharding, which allows the database to scale out by distributing data across multiple servers. This horizontal scalability enables handling large volumes of data and high throughput.
+**Elasticity:** Easily add or remove nodes in a sharded cluster to manage load and storage capacity dynamically.
+`3. High Performance`
+
+**Efficient Storage:** BSON format allows for efficient storage and retrieval of data.
+**Indexing:** MongoDB supports a variety of indexes (single field, compound, geospatial, text, etc.), which can significantly improve query performance.
+**Aggregation Framework:** Provides powerful data processing capabilities directly within the database, reducing the need to transfer large datasets to the application layer for analysis.
+
+`4. High Availability and Reliability`
+
+**Replication:** Replica sets ensure data redundancy and high availability. If the primary node fails, an automatic failover process elects a new primary from the secondary nodes.
+Automated Failover: Increases resilience and ensures minimal downtime, which is critical for production environments.
+
+`5. Rich Query Language`
+
+**Ad-hoc Queries:** Supports dynamic queries that can be constructed at runtime.
+Expressive and Powerful: The MongoDB query language supports a wide range of operations, including filtering, sorting, projection, and aggregation.
+
+#### Disadvantages of MongoDB?
+`1. Limited Support for ACID Transactions`
+
+**ACID Transactions:** MongoDB originally had limited support for ACID (Atomicity, Consistency, Isolation, Durability) transactions, especially for multi-document operations. Although transactions support has improved significantly since version 4.0, it still may not be as mature or as robust as in some traditional relational databases for certain use cases.
+
+`2. Complexity in Managing Relationships`
+
+**Lack of Joins:** Unlike relational databases, MongoDB does not support joins in the same way. While it provides mechanisms like embedded documents and the $lookup operator for simple joins, managing complex relationships and ensuring data integrity can be more challenging.
+
+**Data Duplication:** To overcome the lack of joins, data often needs to be duplicated, which can lead to inconsistencies and increased storage requirements.
+
+`3. Memory Usage`
+High Memory Usage: MongoDB tends to use a significant amount of RAM to improve performance. It maintains indexes and frequently accessed data in memory, which can be costly for applications with large datasets.
+Memory Mapped Storage: MongoDB uses memory-mapped files for data storage, which can lead to issues if the working set size exceeds the available RAM.
+
+What scenarios is MongoDB good for?
+What scenarios is it not good for?
+ 
