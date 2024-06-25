@@ -22,7 +22,7 @@ class City(Country):
         super().__init__(country, continent, climate, language)
         self.city = city
     def print(self):
-        super().print()
+        super().print()d
         print("City :", self.city)
 
 
